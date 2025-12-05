@@ -1,38 +1,24 @@
-name: CI Test &amp; Deploy
+name: Fake CI/CD Demo
+
 on:
-push:
-branches:
-- main
-pull_request:
-branches:
-- main
+  push:
+    branches:
+      - actions_test_student6
+
 jobs:
-test:
-runs-on: ubuntu-latest
-steps:
-- name: Checkout repository
-uses: actions/checkout@v2
-- name: Set up JDK
-uses: actions/setup-java@v1
-with:
-java-version: &#39;11&#39;
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Run fake tests
+        run: echo "Tests passed!"
 
-- name: Build with Gradle
-run: ./gradlew build
-- name: Run Unit Tests
-run: ./gradlew test
-
-deploy:
-needs: test
-runs-on: ubuntu-latest
-steps:
-- name: Checkout repository
-uses: actions/checkout@v2
-- name: Set up JDK
-uses: actions/setup-java@v1
-with:
-java-version: &#39;11&#39;
-- name: Deploy to Firebase App Distribution
-env:
-FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-run: ./gradlew appDistributionUpload
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Fake deploy
+        run: echo "App deployed successfully!"
