@@ -8,6 +8,8 @@ on:
   pull_request:
     branches:
       - main
+      - feature_ci_cd_student6
+
 
 jobs:
   build:
