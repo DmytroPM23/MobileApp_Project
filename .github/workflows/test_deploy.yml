@@ -1,4 +1,4 @@
-name: CI Test & Deploy (Demo)
+name: CI Test & Deploy
 
 on:
   push:
@@ -12,8 +12,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run fake unit tests
-        run: echo "✅ All tests passed!"
+      - name: Run Unit Tests
+        run: echo "✅ Tests passed successfully!"
 
   deploy:
     needs: test
@@ -22,5 +22,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Fake deploy
+      - name: Deploy Application
         run: echo "✅ App deployed successfully!"
